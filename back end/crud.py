@@ -48,11 +48,11 @@ def home():
     return "<h>Home Page</h>"
 
 
-##################################
-#                                #
-#     All Create Functions       #
-#                                #
-##################################
+#####################################################
+#                                                   #
+#               All Create Functions                #
+#                                                   #
+#####################################################
 
 @app.route('/member',methods=["POST"])
 def add_member():
@@ -64,14 +64,20 @@ def add_event():
 
 @app.route('/registration',methods=["POST"])
 def add_registration():
+    '''
+    RULES:
+    member cannot register for the same event twice
+    members of the same (or higher) level may attend the event
+    member can register if event is not yet at capacity
+    '''
     pass 
 
 
-##################################
-#                                #
-#      All Read Functions        #
-#                                #
-##################################
+#####################################################
+#                                                   #
+#                All Read Functions                 #
+#                                                   #
+#####################################################
 
 @app.route('/members',methods=["GET"])
 def read_members():
@@ -83,14 +89,18 @@ def read_events():
 
 @app.route('/registrations',methods=["GET"])
 def read_registration():
+    '''
+    RULES:
+    query will show the registered members for one event
+    '''
     pass 
 
 
-##################################
-#                                #
-#     All Update Functions       #
-#                                #
-##################################
+#####################################################
+#                                                   #
+#               All Update Functions                #
+#                                                   #
+#####################################################
 
 @app.route('/member',methods=["PATCH"])
 def update_member():
@@ -105,11 +115,11 @@ def update_registration():
     pass 
 
 
-##################################
-#                                #
-#     All Delete Functions       #
-#                                #
-##################################
+#####################################################
+#                                                   #
+#               All Delete Functions                #
+#                                                   #
+#####################################################
 
 @app.route('/member',methods=["DELETE"])
 def delete_member():
