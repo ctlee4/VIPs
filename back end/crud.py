@@ -79,9 +79,10 @@ def add_registration():
 #                                                   #
 #####################################################
 
-@app.route('/members',methods=["GET"])
+@app.route('/members',methods=["GET"]) #Jamie
 def read_members():
-    pass 
+    #get list of members 
+    members =  []
 
 @app.route('/events',methods=["GET"])
 def read_events():
