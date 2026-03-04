@@ -54,9 +54,24 @@ def home():
 #                                                   #
 #####################################################
 
-@app.route('/member',methods=["POST"])
+#Function to add a new member to the Member table in the database
+@app.route('/member',methods=["POST"]) #Calvin
 def add_member():
-    pass 
+    request_data = request.get_json()
+
+    newName = request_data['name']
+    newDetails = request_data['details']
+    newTitle = request_data['title']
+    newLevel = request_data['level']
+
+    query = f"""
+    INSERT INTO member (name, details, title, level)
+    VALUES ('{newName}', '{newDetails}', '{newTitle}', '{newLevel}');
+    """
+
+    execute_query(conn, query)
+    return jsonify({'message': 'Member added successfully'})
+
 
 @app.route('/event',methods=["POST"])
 def add_event():
@@ -79,10 +94,9 @@ def add_registration():
 #                                                   #
 #####################################################
 
-@app.route('/members',methods=["GET"]) #Jamie
+@app.route('/members',methods=["GET"])
 def read_members():
-    #get list of members 
-    members =  []
+    pass 
 
 @app.route('/events',methods=["GET"])
 def read_events():
