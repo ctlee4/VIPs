@@ -71,7 +71,16 @@ def add_member():
 
 @app.route('/event',methods=["POST"])
 def add_event():
+    request_data = request.get_json()
      
+    newName = request_data['name']
+    newCapacity = request_data['capacity']
+    newLevel = request_data['level']
+    newDate = request_data['date']
+
+    query = "INSERT INTO event (name, capacity, level, date) VALUES (%s, %s, %s, %s)"
+    execute_query(conn, query, (newName, newCapacity, newLevel, newDate))
+    return jsonify({'message': 'Event added successfully'})
 
 
 @app.route('/registration',methods=["POST"])
