@@ -64,18 +64,15 @@ def add_member():
     newTitle = request_data['title']
     newLevel = request_data['level']
 
-    query = f"""
-    INSERT INTO member (name, details, title, level)
-    VALUES ('{newName}', '{newDetails}', '{newTitle}', '{newLevel}');
-    """
-
-    execute_query(conn, query)
+    query = "INSERT INTO member (name, details, title, level) VALUES (%s, %s, %s, %s)"
+    execute_query(conn, query, (newName, newDetails, newTitle, newLevel))
     return jsonify({'message': 'Member added successfully'})
 
 
 @app.route('/event',methods=["POST"])
 def add_event():
-    pass 
+     
+
 
 @app.route('/registration',methods=["POST"])
 def add_registration():
