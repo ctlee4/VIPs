@@ -54,8 +54,8 @@ def home():
 #                                                   #
 #####################################################
 
-#Function to add a new member to the Member table in the database
-@app.route('/member',methods=["POST"]) #Calvin
+#Calvin - Edited function to add a new member to the Member table in the database
+@app.route('/member',methods=["POST"])
 def add_member():
     request_data = request.get_json()
 
